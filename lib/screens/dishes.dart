@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:eco_angler/screens/notifications.dart';
-import 'package:eco_angler/util/foods.dart';
+import 'package:eco_angler/util/fish.dart';
 import 'package:eco_angler/widgets/badge.dart';
 import 'package:eco_angler/widgets/grid_product.dart';
 
@@ -72,7 +72,7 @@ class _DishesScreenState extends State<DishesScreen> {
               ),
               itemCount: 4,
               itemBuilder: (BuildContext context, int index) {
-                Map food = foods[index];
+                Map food = fish[index];
                 return GridProduct(
                   img: food['img'],
                   isFav: false,
@@ -105,7 +105,7 @@ class _DishesScreenState extends State<DishesScreen> {
               ),
               itemCount: 4,
               itemBuilder: (BuildContext context, int index) {
-                Map food = foods[index];
+                Map food = fish[index];
                 return GridProduct(
                   img: food['img'],
                   isFav: false,
@@ -138,7 +138,7 @@ class _DishesScreenState extends State<DishesScreen> {
               ),
               itemCount: 4,
               itemBuilder: (BuildContext context, int index) {
-                Map food = foods[index];
+                Map food = fish[index];
                 return GridProduct(
                   img: food['img'],
                   isFav: false,

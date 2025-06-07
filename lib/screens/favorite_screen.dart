@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:eco_angler/util/foods.dart';
+import 'package:eco_angler/util/fish.dart';
 import 'package:eco_angler/widgets/grid_product.dart';
 
 class FavoriteScreen extends StatefulWidget {
@@ -35,10 +35,10 @@ class _FavoriteScreenState extends State<FavoriteScreen> with AutomaticKeepAlive
                 childAspectRatio: MediaQuery.of(context).size.width /
                     (MediaQuery.of(context).size.height / 1.25),
               ),
-              itemCount: foods == null ? 0 :foods.length,
+              itemCount: fish == null ? 0 :fish.length,
               itemBuilder: (BuildContext context, int index) {
 //                Food food = Food.fromJson(foods[index]);
-                Map food = foods[index];
+                Map food = fish[index];
 //                print(foods);
 //                print(foods.length);
                 return GridProduct(

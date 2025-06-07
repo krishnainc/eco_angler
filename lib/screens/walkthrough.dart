@@ -1,3 +1,4 @@
+import 'package:eco_angler/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:eco_angler/screens/join.dart';
@@ -12,25 +13,14 @@ class _WalkthroughState extends State<Walkthrough> {
 
   List pageInfos = [
     {
-      "title": "Fresh Food",
-      "body": "Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
-          " Vestibulum ac diam sit amet quam vehicula elementum sed sit amet "
-          "dui. Nulla porttitor accumsan tincidunt.",
-      "img": "assets/on1.png",
+      "title": "Fish Smart",
+      "body": "Instantly get to know nearby fishing spots with details",
+      "img": "assets/fish.png",
     },
     {
-      "title": "Fast Delivery",
-      "body": "Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
-          " Vestibulum ac diam sit amet quam vehicula elementum sed sit amet "
-          "dui. Nulla porttitor accumsan tincidunt.",
-      "img": "assets/on2.png",
-    },
-    {
-      "title": "Easy Payment",
-      "body": "Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
-          " Vestibulum ac diam sit amet quam vehicula elementum sed sit amet "
-          "dui. Nulla porttitor accumsan tincidunt.",
-      "img": "assets/on3.png",
+      "title": "Species Discovery",
+      "body": "Instantly get to know whether it is an invasive or non-invasive fish species",
+      "img": "assets/lion.jpg",
     },
   ];
   @override
@@ -52,7 +42,7 @@ class _WalkthroughState extends State<Walkthrough> {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context){
-                    return JoinApp();
+                    return MainScreen();
                   },
                 ),
               );
@@ -61,7 +51,7 @@ class _WalkthroughState extends State<Walkthrough> {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context){
-                    return JoinApp();
+                    return MainScreen();
                   },
                 ),
               );

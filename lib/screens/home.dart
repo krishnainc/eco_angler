@@ -3,9 +3,14 @@ import 'package:eco_angler/screens/dishes.dart';
 import 'package:eco_angler/widgets/grid_product.dart';
 import 'package:eco_angler/widgets/home_category.dart';
 import 'package:eco_angler/widgets/slider_item.dart';
-import 'package:eco_angler/util/foods.dart';
-import 'package:eco_angler/util/categories.dart';
+import 'package:eco_angler/util/fish.dart';
+import 'package:eco_angler/util/fishingspot.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:eco_angler/screens/weather.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+
 
 
 class Home extends StatefulWidget {
@@ -14,6 +19,28 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home>{
+  late YoutubePlayerController _youtubeController;
+
+  @override
+  void initState() {
+    super.initState();
+    _youtubeController = YoutubePlayerController(
+      initialVideoId: YoutubePlayer.convertUrlToId(
+        'https://www.youtube.com/watch?v=spTWwqVP_2s', // Replace with your own
+      )!,
+      flags: const YoutubePlayerFlags(
+        autoPlay: false,
+        mute: false,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _youtubeController.dispose();
+    super.dispose();
+  }
+
 
   List<T> map<T>(List list, Function handler) {
     List<T> result = [];
@@ -36,54 +63,43 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home>{
         padding: EdgeInsets.fromLTRB(10.0,0,10.0,0),
         child: ListView(
           children: <Widget>[
+
+            SizedBox(height: 10.0),
+
+            WeatherCard(), // <- This shows the dynamic weather widget
+
+            SizedBox(height: 20),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  "Dishes",
+                  "Invasive Fish Species in Malaysia",
                   style: TextStyle(
-                    fontSize: 23,
+                    fontSize: 20,
                     fontWeight: FontWeight.w800,
                   ),
                 ),
 
-
-                TextButton(
-                  child: Text(
-                    "View More",
-                    style: TextStyle(
-//                      fontSize: 22,
-//                      fontWeight: FontWeight.w800,
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
-                  ),
-                  onPressed: (){
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (BuildContext context){
-                          return DishesScreen();
-                        },
-                      ),
-                    );
-                  },
-                ),
               ],
             ),
 
-            SizedBox(height: 10.0),
+            SizedBox(height: 30.0),
 
             //Slider Here
 
             CarouselSlider(
-              items: foods.map<Widget>((food) {
-                return SliderItem(
-                  img: food['img'],
-                  isFav: false,
-                  name: food['name'],
-                  rating: 5.0,
-                  raters: 23,
-                );
-              }).toList(),
+                items: fish.map<Widget>((food) {
+                  return AbsorbPointer(
+                    absorbing: true, // Disable clicking
+                    child: SliderItem(
+                      img: food['img'],
+                      isFav: false,
+                      name: food['name'],
+                      rating: 5.0,
+                    ),
+                  );
+                }).toList(),
               options: CarouselOptions(
                 height: MediaQuery.of(context).size.height / 2.4,
                 autoPlay: true,
@@ -95,92 +111,25 @@ class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home>{
                 },
               ),
             ),
-            SizedBox(height: 20.0),
+            SizedBox(height: 10.0),
+
 
             Text(
-              "Food Categories",
+              "Watch: Impact of Invasive Fish Species",
               style: TextStyle(
-                fontSize: 23,
-                fontWeight: FontWeight.w800,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 10.0),
-
-            Container(
-              height: 65.0,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                shrinkWrap: true,
-                itemCount: categories == null?0:categories.length,
-                itemBuilder: (BuildContext context, int index) {
-                  Map cat = categories[index];
-                  return HomeCategory(
-                    icon: cat['icon'],
-                    title: cat['name'],
-                    items: cat['items'].toString(),
-                    isHome: true,
-                    tap: () {
-                      // Do something on tap or leave empty if not needed
-                    },
-                  );
-                },
-              ),
-            ),
-
-            SizedBox(height: 20.0),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(
-                  "Popular Items",
-                  style: TextStyle(
-                    fontSize: 23,
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
-
-                TextButton(
-                  child: Text(
-                    "View More",
-                    style: TextStyle(
-//                      fontSize: 22,
-//                      fontWeight: FontWeight.w800,
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
-                  ),
-                  onPressed: (){},
-                ),
-              ],
-            ),
-            SizedBox(height: 10.0),
-
-            GridView.builder(
-              shrinkWrap: true,
-              primary: false,
-              physics: NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: MediaQuery.of(context).size.width /
-                    (MediaQuery.of(context).size.height / 1.25),
-              ),
-              itemCount: foods == null ? 0 :foods.length,
-              itemBuilder: (BuildContext context, int index) {
-//                Food food = Food.fromJson(foods[index]);
-                Map food = foods[index];
-//                print(foods);
-//                print(foods.length);
-                return GridProduct(
-                  img: food['img'],
-                  isFav: false,
-                  name: food['name'],
-                  rating: 5.0,
-                  raters: 23,
-                );
-              },
-            ),
-
             SizedBox(height: 30),
+            YoutubePlayer(
+              controller: _youtubeController,
+              showVideoProgressIndicator: true,
+              progressIndicatorColor: Colors.redAccent,
+              width: MediaQuery.of(context).size.width,
+              aspectRatio: 16 / 9,
+            ),
+            SizedBox(height: 20),
           ],
         ),
       ),

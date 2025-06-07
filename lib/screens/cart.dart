@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:eco_angler/screens/checkout.dart';
-import 'package:eco_angler/util/foods.dart';
+import 'package:eco_angler/util/fish.dart';
 import 'package:eco_angler/widgets/cart_item.dart';
 
 
@@ -17,10 +17,10 @@ class _CartScreenState extends State<CartScreen> with AutomaticKeepAliveClientMi
       body: Padding(
         padding: EdgeInsets.fromLTRB(10.0,0,10.0,0),
         child: ListView.builder(
-          itemCount: foods == null ? 0 :foods.length,
+          itemCount: fish == null ? 0 :fish.length,
           itemBuilder: (BuildContext context, int index) {
 //                Food food = Food.fromJson(foods[index]);
-            Map food = foods[index];
+            Map food = fish[index];
 //                print(foods);
 //                print(foods.length);
             return CartItem(

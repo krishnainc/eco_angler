@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:eco_angler/screens/notifications.dart';
-import 'package:eco_angler/util/categories.dart';
-import 'package:eco_angler/util/foods.dart';
+import 'package:eco_angler/util/fishingspot.dart';
+import 'package:eco_angler/util/fish.dart';
 import 'package:eco_angler/widgets/badge.dart';
 import 'package:eco_angler/widgets/grid_product.dart';
 import 'package:eco_angler/widgets/home_category.dart';
@@ -59,9 +59,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
-                itemCount: categories == null?0:categories.length,
+                itemCount: fishingSpots == null?0:fishingSpots.length,
                 itemBuilder: (BuildContext context, int index) {
-                  Map cat = categories[index];
+                  Map cat = fishingSpots[index];
                   return HomeCategory(
                     icon: cat['icon'],
                     title: cat['name'],
@@ -96,9 +96,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 childAspectRatio: MediaQuery.of(context).size.width /
                     (MediaQuery.of(context).size.height / 1.25),
               ),
-              itemCount: foods == null ? 0 :foods.length,
+              itemCount: fish == null ? 0 :fish.length,
               itemBuilder: (BuildContext context, int index) {
-                Map food = foods[index];
+                Map food = fish[index];
                 return GridProduct(
                   img: food['img'],
                   isFav: false,

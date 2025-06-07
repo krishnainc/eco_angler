@@ -9,7 +9,6 @@ class SliderItem extends StatelessWidget {
   final String img;
   final bool isFav;
   final double rating;
-  final int raters;
 
 
   SliderItem({
@@ -17,8 +16,7 @@ class SliderItem extends StatelessWidget {
     required this.name,
     required this.img,
     required this.isFav,
-    required this.rating,
-    required this.raters})
+    required this.rating})
       :super(key: key);
 
   @override
@@ -92,7 +90,7 @@ class SliderItem extends StatelessWidget {
                 ),
 
                 Text(
-                  " $rating ($raters Reviews)",
+                  " $rating ",
                   style: TextStyle(
                     fontSize: 11.0,
                   ),

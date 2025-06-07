@@ -1,3 +1,5 @@
+import 'package:eco_angler/screens/identify_fish_screen.dart';
+import 'package:eco_angler/screens/map_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eco_angler/screens/cart.dart';
@@ -5,7 +7,7 @@ import 'package:eco_angler/screens/favorite_screen.dart';
 import 'package:eco_angler/screens/home.dart';
 import 'package:eco_angler/screens/notifications.dart';
 import 'package:eco_angler/screens/profile.dart';
-import 'package:eco_angler/screens/search.dart';
+// import 'package:eco_angler/screens/search.dart';
 import 'package:eco_angler/util/const.dart';
 import 'package:eco_angler/widgets/badge.dart';
 
@@ -58,9 +60,9 @@ class _MainScreenState extends State<MainScreen> {
           children: <Widget>[
             Home(),
             FavoriteScreen(),
-            SearchScreen(),
+            MapScreen(),
             CartScreen(),
-            Profile(),
+            IdentifyFishScreen(),
           ],
         ),
 
@@ -85,18 +87,7 @@ class _MainScreenState extends State<MainScreen> {
                 onPressed: ()=>_pageController.jumpToPage(0),
               ),
 
-              IconButton(
-                icon:Icon(
-                  Icons.favorite,
-                  size: 24.0,
-                ),
-                color: _page == 1
-                    ? Theme.of(context).colorScheme.secondary
-                    : Theme
-                    .of(context)
-                    .textTheme.bodySmall?.color,
-                onPressed: ()=>_pageController.jumpToPage(1),
-              ),
+
 
               IconButton(
                 icon: Icon(
@@ -112,22 +103,11 @@ class _MainScreenState extends State<MainScreen> {
                 onPressed: ()=>_pageController.jumpToPage(2),
               ),
 
-              IconButton(
-                icon: IconBadge(
-                  icon: Icons.shopping_cart,
-                  size: 24.0,
-                ),
-                color: _page == 3
-                    ? Theme.of(context).colorScheme.secondary
-                    : Theme
-                    .of(context)
-                    .textTheme.bodySmall?.color,
-                onPressed: ()=>_pageController.jumpToPage(3),
-              ),
+
 
               IconButton(
                 icon: Icon(
-                  Icons.person,
+                  Icons.monochrome_photos_outlined,
                   size: 24.0,
                 ),
                 color: _page == 4

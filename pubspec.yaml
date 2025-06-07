@@ -30,6 +30,14 @@ dependencies:
   font_awesome_flutter: ^10.8.0
   carousel_slider: ^5.0.0
   provider: ^6.1.5
+  flutter_map: ^8.1.1
+  latlong2: ^0.9.0
+  http: ^1.2.1
+  geolocator: ^14.0.1
+  youtube_player_flutter: ^9.1.1
+  camera: ^0.10.5
+  image_picker: ^1.0.7
+  path_provider: ^2.1.2
 
 dev_dependencies:
   flutter_test:
@@ -64,3 +72,18 @@ flutter:
     - assets/cm2.jpeg
     - assets/cm3.jpeg
     - assets/cm4.jpeg
+    - assets/logotrans.png
+    - assets/fish.png
+    - assets/lion.jpg
+    - assets/fish1.jpg
+    - assets/fish2.jpg
+    - assets/fish3.jpg
+    - assets/fish4.jpg
+    - assets/fish5.jpg
+    - assets/fish6.jpg
+    - assets/fish7.jpg
+    - assets/fish8.webp
+    - assets/fish9.jpg
+    - assets/fish10.webp
+    - assets/fish11.jpg
+    - assets/fish12.jpg

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:eco_angler/util/foods.dart';
+import 'package:eco_angler/util/fish.dart';
 import 'package:eco_angler/widgets/cart_item.dart';
 
 class Checkout extends StatefulWidget {
@@ -128,10 +128,10 @@ class _CheckoutState extends State<Checkout> {
             ListView.builder(
               primary: false,
               shrinkWrap: true,
-              itemCount: foods == null ? 0 :foods.length,
+              itemCount: fish == null ? 0 :fish.length,
               itemBuilder: (BuildContext context, int index) {
 //                Food food = Food.fromJson(foods[index]);
-                Map food = foods[index];
+                Map food = fish[index];
 //                print(foods);
 //                print(foods.length);
                 return CartItem(

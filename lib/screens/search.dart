@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:eco_angler/util/const.dart';
-import 'package:eco_angler/util/foods.dart';
+import 'package:eco_angler/util/fish.dart';
 import 'package:eco_angler/widgets/smooth_star_rating.dart';
 
 
@@ -78,9 +78,9 @@ class _SearchScreenState extends State<SearchScreen> with AutomaticKeepAliveClie
             shrinkWrap: true,
             primary: false,
             physics: NeverScrollableScrollPhysics(),
-            itemCount: foods == null ? 0 :foods.length,
+            itemCount: fish == null ? 0 :fish.length,
             itemBuilder: (BuildContext context, int index) {
-              Map food = foods[index];
+              Map food = fish[index];
               return ListTile(
                 title: Text(
                   "${food['name']}",

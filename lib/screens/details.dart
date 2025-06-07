@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:eco_angler/screens/notifications.dart';
 import 'package:eco_angler/util/comments.dart';
 import 'package:eco_angler/util/const.dart';
-import 'package:eco_angler/util/foods.dart';
+import 'package:eco_angler/util/fish.dart';
 import 'package:eco_angler/widgets/badge.dart';
 import 'package:eco_angler/widgets/smooth_star_rating.dart';
 
@@ -61,7 +61,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(8.0),
                     child: Image.asset(
-                      "${foods[1]['img']}",
+                      "${fish[1]['img']}",
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -93,7 +93,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             SizedBox(height: 10.0),
 
             Text(
-              "${foods[1]['name']}",
+              "${fish[1]['name']}",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w800,

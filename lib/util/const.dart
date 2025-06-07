@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 class Constants{
 
-  static String appName = "Eco Angler";
+  static String appName = "EcoAngler";
 
   //Colors for theme
 //  Color(0xfffcfcff);
