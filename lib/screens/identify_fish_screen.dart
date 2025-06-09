@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 
@@ -121,90 +122,144 @@ class _IdentifyFishScreenState extends State<IdentifyFishScreen> with SingleTick
       context: context,
       builder: (context) {
         return Dialog(
+          backgroundColor: Colors.transparent,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                // 🐟 Image
-                ClipRRect(
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                  child: Image.file(imageFile, height: 200, width: double.infinity, fit: BoxFit.cover),
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // 📋 Info Fields
-                      for (var entry in info.entries)
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 2),
-                          child: RichText(
-                            text: TextSpan(
-                              style: TextStyle(color: Colors.black, fontSize: 14),
-                              children: [
-                                TextSpan(
-                                  text: "${entry.key}: ",
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                                TextSpan(text: entry.value),
-                              ],
-                            ),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.green[900],
+              borderRadius: BorderRadius.circular(20),
+            ),
+            padding: const EdgeInsets.all(10),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  // 🐟 Image at Top
+                  SizedBox(
+                    width: 400,
+                    height: 200,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(15),
+                      child: FittedBox(
+                        fit: BoxFit.cover,
+                        clipBehavior: Clip.hardEdge,
+                        child: SizedBox(
+                          width: 300,
+                          height: 200,
+                          child: Image.file(
+                            imageFile,
+                            fit: BoxFit.cover,
+                            alignment: Alignment.center,
                           ),
                         ),
-                      SizedBox(height: 12),
+                      ),
+                    ),
+                  ),
 
-                      // 🟢 Concern and Invasive Status
-                      Row(
-                        children: [
-                          Chip(
-                            label: Text(info["Concern Level"] ?? ''),
-                            avatar: Icon(Icons.info_outline, color: Colors.white, size: 18),
-                            backgroundColor: info["Concern Level"] == "Very Concern" ? Colors.red : Colors.green,
-                            labelStyle: TextStyle(color: Colors.white),
-                          ),
-                          Spacer(),
-                          Chip(
-                            label: Text(isInvasive ? 'Invasive' : 'Non Invasive'),
-                            avatar: Icon(
-                              isInvasive ? Icons.warning_amber_rounded : Icons.check_circle_outline,
-                              color: Colors.white,
-                              size: 18,
+
+
+                  const SizedBox(height: 12),
+
+                  SizedBox(
+                    width:400,
+                    height:300,
+
+                 child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white54,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // 📝 Info Fields
+                        for (var entry in info.entries)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4),
+                            child: RichText(
+                              text: TextSpan(
+                                style: GoogleFonts.sora(
+                                  color: Colors.black,
+                                  fontSize: 14,
+                                ),
+
+                                children: [
+                                  TextSpan(
+                                    text: "${entry.key}: ",
+                                    style: const TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  TextSpan(
+                                    text: entry.key.toLowerCase().contains("scientific")
+                                        ? entry.value
+                                        : entry.value,
+                                    style: entry.key.toLowerCase().contains("scientific")
+                                        ? const TextStyle(fontStyle: FontStyle.italic)
+                                        : null,
+                                  ),
+                                ],
+                              ),
                             ),
-                            backgroundColor: isInvasive ? Colors.red : Colors.green,
-                            labelStyle: TextStyle(color: Colors.white),
                           ),
-                        ],
+                      ],
+                    ),
+                  ),
+                  ),
+
+                  const SizedBox(height: 10),
+
+                  Row(
+                    children: [
+                      Chip(
+                        label: Text(info["Concern Level"] ?? 'Unknown'),
+                        avatar: const Icon(Icons.info_outline, color: Colors.white, size: 18),
+                        backgroundColor: info["Concern Level"] == "Very Concern"
+                            ? Colors.red
+                            : Colors.green,
+                        labelStyle: const TextStyle(color: Colors.white),
                       ),
-
-                      SizedBox(height: 16),
-
-                      // ⭐ Star Rating & Info
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(5, (index) {
-                          return Icon(
-                            index < 4 ? Icons.star : Icons.star_border,
-                            color: Colors.amber,
-                          );
-                        }),
+                      const Spacer(),
+                      Chip(
+                        label: Text(isInvasive ? 'Invasive' : 'Non Invasive'),
+                        avatar: Icon(
+                          isInvasive ? Icons.warning_amber_rounded : Icons.check_circle_outline,
+                          color: Colors.white,
+                          size: 18,
+                        ),
+                        backgroundColor: isInvasive ? Colors.red : Colors.green,
+                        labelStyle: const TextStyle(color: Colors.white),
                       ),
-
-                      SizedBox(height: 10),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Icon(Icons.info_outline, size: 20),
-                      )
                     ],
                   ),
-                ),
-              ],
+
+                  const SizedBox(height: 10),
+
+                  // ⭐ Star Rating
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(5, (index) {
+                      return Icon(
+                        index < 4 ? Icons.star : Icons.star_border,
+                        color: Colors.amber,
+                        size: 24,
+                      );
+                    }),
+                  ),
+
+                  const SizedBox(height: 6),
+
+                  // ℹ️ Info icon
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Icon(Icons.info_outline, size: 20, color: Colors.white),
+                  ),
+                ],
+              ),
             ),
           ),
         );
       },
     );
+
   }
 
 
