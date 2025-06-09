@@ -4,14 +4,16 @@ import 'package:eco_angler/screens/main_screen.dart';
 
 
 class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+
   @override
   _RegisterScreenState createState() => _RegisterScreenState();
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final TextEditingController _usernameControl = new TextEditingController();
-  final TextEditingController _emailControl = new TextEditingController();
-  final TextEditingController _passwordControl = new TextEditingController();
+  final TextEditingController _usernameControl = TextEditingController();
+  final TextEditingController _emailControl = TextEditingController();
+  final TextEditingController _passwordControl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -167,7 +169,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
           SizedBox(height: 40.0),
 
-          Container(
+          SizedBox(
             height: 50.0,
             child: ElevatedButton(
               onPressed: (){
@@ -194,7 +196,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
 
           Center(
-            child: Container(
+            child: SizedBox(
               width: MediaQuery.of(context).size.width/2,
               child: Row(
                 children: <Widget>[

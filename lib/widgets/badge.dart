@@ -6,10 +6,10 @@ class IconBadge extends StatefulWidget {
   final double? size;
 
   const IconBadge({
-    Key? key,
+    super.key,
     required this.icon,
     this.size,
-  }) : super(key: key);
+  });
 
 
   @override

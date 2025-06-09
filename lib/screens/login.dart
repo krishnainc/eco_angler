@@ -5,14 +5,16 @@ import 'package:eco_angler/screens/main_screen.dart';
 
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
 
-  final TextEditingController _usernameControl = new TextEditingController();
-  final TextEditingController _passwordControl = new TextEditingController();
+  final TextEditingController _usernameControl = TextEditingController();
+  final TextEditingController _passwordControl = TextEditingController();
 
 
   @override
@@ -143,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
           SizedBox(height: 30.0),
 
-          Container(
+          SizedBox(
             height: 50.0,
             child: ElevatedButton(
               onPressed: (){
@@ -170,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
           Center(
-            child: Container(
+            child: SizedBox(
               width: MediaQuery.of(context).size.width/2,
               child: Row(
                 children: <Widget>[

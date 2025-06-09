@@ -6,6 +6,8 @@ import 'package:http/http.dart' as http;
 import 'package:eco_angler/util/fishingspot.dart';
 
 class MapScreen extends StatefulWidget {
+  const MapScreen({super.key});
+
   @override
   _MapScreenState createState() => _MapScreenState();
 }
@@ -60,20 +62,27 @@ class _MapScreenState extends State<MapScreen> {
       ),
       builder: (_) {
         return Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(120.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(spot['icon'], size: 40, color: Colors.blue),
+              Icon(spot['icon'], size: 70, color: Colors.blue),
               SizedBox(height: 10),
               Text(
                 spot['name'],
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 8),
-              Text(spot['description']),
+              Text(
+                spot['description'],
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 20),),
               SizedBox(height: 8),
-              Text('Distance: $distanceText'),
+              Text(
+                'Distance: $distanceText',
+                style: TextStyle(fontSize: 15),
+              ),
               SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () => Navigator.pop(context),

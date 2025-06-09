@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:eco_angler/screens/dishes.dart';
-import 'package:eco_angler/widgets/grid_product.dart';
-import 'package:eco_angler/widgets/home_category.dart';
 import 'package:eco_angler/widgets/slider_item.dart';
 import 'package:eco_angler/util/fish.dart';
-import 'package:eco_angler/util/fishingspot.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:eco_angler/screens/weather.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -14,6 +9,8 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 
 class Home extends StatefulWidget {
+  const Home({super.key});
+
   @override
   _HomeState createState() => _HomeState();
 }

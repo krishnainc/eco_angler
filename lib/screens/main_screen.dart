@@ -1,18 +1,15 @@
 import 'package:eco_angler/screens/identify_fish_screen.dart';
 import 'package:eco_angler/screens/map_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:eco_angler/screens/cart.dart';
-import 'package:eco_angler/screens/favorite_screen.dart';
 import 'package:eco_angler/screens/home.dart';
 import 'package:eco_angler/screens/notifications.dart';
-import 'package:eco_angler/screens/profile.dart';
-// import 'package:eco_angler/screens/search.dart';
 import 'package:eco_angler/util/const.dart';
 import 'package:eco_angler/widgets/badge.dart';
 
 
 class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -59,9 +56,7 @@ class _MainScreenState extends State<MainScreen> {
           onPageChanged: onPageChanged,
           children: <Widget>[
             Home(),
-            FavoriteScreen(),
             MapScreen(),
-            CartScreen(),
             IdentifyFishScreen(),
           ],
         ),
@@ -69,7 +64,7 @@ class _MainScreenState extends State<MainScreen> {
         bottomNavigationBar: BottomAppBar(
           color: Theme.of(context).primaryColor,
           shape: CircularNotchedRectangle(),
-          child: new Row(
+          child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -100,7 +95,7 @@ class _MainScreenState extends State<MainScreen> {
                     : Theme
                     .of(context)
                     .textTheme.bodySmall?.color,
-                onPressed: ()=>_pageController.jumpToPage(2),
+                onPressed: ()=>_pageController.jumpToPage(1),
               ),
 
 
@@ -115,7 +110,7 @@ class _MainScreenState extends State<MainScreen> {
                     : Theme
                     .of(context)
                     .textTheme.bodySmall?.color,
-                onPressed: ()=>_pageController.jumpToPage(4),
+                onPressed: ()=>_pageController.jumpToPage(2),
               ),
 
               SizedBox(width:7),
@@ -129,7 +124,7 @@ class _MainScreenState extends State<MainScreen> {
           child: Icon(
             Icons.search,
           ),
-          onPressed: ()=>_pageController.jumpToPage(2),
+          onPressed: ()=>_pageController.jumpToPage(1),
         ),
 
       ),
@@ -154,7 +149,7 @@ class _MainScreenState extends State<MainScreen> {
 
   void onPageChanged(int page) {
     setState(() {
-      this._page = page;
+      _page = page;
     });
   }
 }

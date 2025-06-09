@@ -4,7 +4,6 @@ import 'package:eco_angler/providers/app_provider.dart';
 import 'package:eco_angler/screens/splash.dart';
 import 'package:eco_angler/util/const.dart';
 
-import 'util/const.dart';
 
 void main() {
   runApp(
@@ -18,6 +17,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Consumer<AppProvider>(
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           navigatorKey: appProvider.navigatorKey,
           title: Constants.appName,
           theme: appProvider.theme,
-          darkTheme: Constants.darkTheme,
+          darkTheme: null,
           home: SplashScreen(),
         );
       },

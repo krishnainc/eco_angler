@@ -12,9 +12,9 @@ class Food {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['img'] = this.img;
-    data['name'] = this.name;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['img'] = img;
+    data['name'] = name;
     return data;
   }
 }

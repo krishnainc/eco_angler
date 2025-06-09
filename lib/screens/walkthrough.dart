@@ -1,10 +1,11 @@
 import 'package:eco_angler/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:eco_angler/screens/join.dart';
 
 
 class Walkthrough extends StatefulWidget {
+  const Walkthrough({super.key});
+
   @override
   _WalkthroughState createState() => _WalkthroughState();
 }
@@ -78,7 +79,7 @@ class _WalkthroughState extends State<Walkthrough> {
     );
   }
 
-  _buildPageModel(Map item){
+  PageViewModel _buildPageModel(Map item){
     return PageViewModel(
       title: item['title'],
       body: item['body'],

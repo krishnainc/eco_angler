@@ -44,7 +44,7 @@ class Constants{
       ),
     ),
     colorScheme: ColorScheme.dark(
-      background: darkBG,
+      surface: darkBG,
       primary: darkPrimary,
       secondary: darkAccent ?? Colors.blueAccent,
     ),

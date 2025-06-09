@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 
 
 class JoinApp extends StatefulWidget {
+  const JoinApp({super.key});
+
   @override
   _JoinAppState createState() => _JoinAppState();
 }

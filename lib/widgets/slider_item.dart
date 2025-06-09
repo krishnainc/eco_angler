@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:eco_angler/screens/details.dart';
 import 'package:eco_angler/util/const.dart';
 import 'package:eco_angler/widgets/smooth_star_rating.dart';
 
@@ -11,13 +10,12 @@ class SliderItem extends StatelessWidget {
   final double rating;
 
 
-  SliderItem({
-    Key? key,
+  const SliderItem({
+    super.key,
     required this.name,
     required this.img,
     required this.isFav,
-    required this.rating})
-      :super(key: key);
+    required this.rating});
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +26,13 @@ class SliderItem extends StatelessWidget {
         children: <Widget>[
           Stack(
             children: <Widget>[
-              Container(
+              SizedBox(
                 height: MediaQuery.of(context).size.height / 3.2,
                 width: MediaQuery.of(context).size.width,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.asset(
-                    "$img",
+                    img,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -68,7 +66,7 @@ class SliderItem extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(bottom: 2.0, top: 8.0),
             child: Text(
-              "$name",
+              name,
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.w900,
@@ -103,15 +101,7 @@ class SliderItem extends StatelessWidget {
 
         ],
       ),
-      onTap: (){
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (BuildContext context){
-              return ProductDetails();
-            },
-          ),
-        );
-      },
+
     );
   }
 }

@@ -4,9 +4,7 @@ import 'package:eco_angler/util/const.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppProvider extends ChangeNotifier{
-  AppProvider(){
-    checkTheme();
-  }
+
 
 
   ThemeData theme = Constants.lightTheme;
@@ -23,38 +21,21 @@ class AppProvider extends ChangeNotifier{
     notifyListeners();
   }
 
-  void setTheme(value, c) {
+  void setTheme(value) {
     theme = value;
-    SharedPreferences.getInstance().then((prefs){
-      prefs.setString("theme", c).then((val){
-        SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
-        SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-          statusBarColor: c == "dark" ? Constants.darkPrimary : Constants.lightPrimary,
-          statusBarIconBrightness: c == "dark" ? Brightness.light:Brightness.dark,
-        ));
-      });
+    SharedPreferences.getInstance().then((prefs) {
+      prefs.setString("theme", "light"); // always light
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Constants.lightPrimary,
+        statusBarIconBrightness: Brightness.dark,
+      ));
     });
     notifyListeners();
   }
+
 
   ThemeData getTheme(value) {
     return theme;
   }
 
-  Future<ThemeData> checkTheme() async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    ThemeData t;
-    String? r = prefs.getString(
-        "theme") ?? "light";
-
-    if(r == "light"){
-      t = Constants.lightTheme;
-      setTheme(Constants.lightTheme, "light");
-    }else{
-      t = Constants.darkTheme;
-      setTheme(Constants.darkTheme, "dark");
-    }
-
-    return t;
-  }
 }
