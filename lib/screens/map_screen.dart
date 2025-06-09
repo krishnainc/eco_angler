@@ -71,23 +71,19 @@ class _MapScreenState extends State<MapScreen> {
               Text(
                 spot['name'],
                   textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 8),
               Text(
                 spot['description'],
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20),),
+                style: TextStyle(fontSize: 15),),
               SizedBox(height: 8),
               Text(
                 'Distance: $distanceText',
-                style: TextStyle(fontSize: 15),
+                style: TextStyle(fontSize: 10),
               ),
               SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () => Navigator.pop(context),
-                child: Text('Close'),
-              ),
             ],
           ),
         );

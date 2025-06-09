@@ -30,24 +30,7 @@ class _MainScreenState extends State<MainScreen> {
             Constants.appName,
           ),
           elevation: 0.0,
-          actions: <Widget>[
-            IconButton(
-              icon: IconBadge(
-                icon: Icons.notifications,
-                size: 22.0,
-              ),
-              onPressed: (){
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (BuildContext context){
-                      return Notifications();
-                    },
-                  ),
-                );
-              },
-              tooltip: "Notifications",
-            ),
-          ],
+
         ),
 
         body: PageView(
